@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-white antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  ::selection {
+    @apply bg-accent text-background;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent/40 rounded-full;
+  }
+}
+
+@layer utilities {
+  .masonry-grid {
+    columns: 1;
+    column-gap: 1rem;
+  }
+
+  @screen sm {
+    .masonry-grid { columns: 2; }
+  }
+
+  @screen lg {
+    .masonry-grid { columns: 3; }
+  }
+
+  @screen xl {
+    .masonry-grid { columns: 4; }
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
