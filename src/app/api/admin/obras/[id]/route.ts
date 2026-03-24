@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { supabaseAdmin } from '@/lib/supabase/client';
+import type { Database } from '@/types/supabase';
 
 function isAuthenticated() {
   return cookies().get('admin_session')?.value === process.env.ADMIN_PASSWORD;
@@ -11,7 +12,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   const body = await req.json();
   const { data, error } = await supabaseAdmin
     .from('obras')
-    .update(body)
+    .update(body as Database['public']['Tables']['obras']['Update'])
     .eq('id', params.id)
     .select()
     .single();
