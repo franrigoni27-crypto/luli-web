@@ -4,6 +4,7 @@ import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe/client';
 import { supabase } from '@/lib/supabase/client';
 import { PRINT_SIZES } from '@/lib/constants';
+import type { Obra } from '@/lib/supabase/types';
 
 const cartItemSchema = z.object({
   id: z.string(),
@@ -36,7 +37,7 @@ export async function POST(req: NextRequest) {
         .from('obras')
         .select('*')
         .eq('slug', item.slug)
-        .single();
+        .single() as { data: Obra | null; error: unknown };
 
       if (!obra) {
         return NextResponse.json(
