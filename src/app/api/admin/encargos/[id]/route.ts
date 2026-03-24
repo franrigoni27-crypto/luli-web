@@ -25,7 +25,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 
   const { data, error } = await supabaseAdmin
     .from('encargos')
-    .update(safeBody)
+    .update(safeBody as any)
     .eq('id', params.id)
     .select()
     .single();
