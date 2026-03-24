@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3",
-    "@next/swc-win32-x64-msvc": "^16.1.6",
     "@react-email/components": "^0.0.22",
     "@stripe/stripe-js": "^3",
     "@supabase/supabase-js": "^2",
