@@ -12,7 +12,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   const body = await req.json();
   const { data, error } = await supabaseAdmin
     .from('obras')
-    .update(body as Database['public']['Tables']['obras']['Update'])
+    .update(body as never)
     .eq('id', params.id)
     .select()
     .single();
